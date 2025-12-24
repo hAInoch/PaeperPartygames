@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
     <title>De Paeper-Partygames</title>
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
     <link href="https://fonts.googleapis.com/css2?family=Bogle:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #0f172a;
@@ -22,7 +26,7 @@
             font-family: 'Bogle', sans-serif;
             display: flex;
             flex-direction: column;
-            height: 100dvh; /* Dynamic Viewport Height */
+            height: 100dvh; 
             box-sizing: border-box;
         }
 
@@ -45,6 +49,7 @@
             text-align: center;
             margin: 0 0 10px 0;
             line-height: 1.1;
+            color: #f8fafc;
         }
 
         .game-card {
@@ -59,12 +64,14 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            transition: transform 0.1s;
+            transition: transform 0.1s, filter 0.2s;
             box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
         .game-card:active {
             transform: scale(0.97);
+            filter: brightness(1.1);
         }
 
         .btn-30s { background-color: var(--accent-30s); }
