@@ -2,71 +2,69 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
     <title>De Paeper-Partygames</title>
     <link href="https://fonts.googleapis.com/css2?family=Bogle:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0f172a;
-            --text-color: #ffffff;
-            --accent-30s: #e11d48; /* Roodachtig */
-            --accent-bom: #f59e0b; /* Oranjeachtig */
-            --accent-wie: #10b981; /* Groenachtig */
+            --accent-30s: #e11d48;
+            --accent-bom: #f59e0b;
+            --accent-wie: #10b981;
         }
 
+        /* Gebruik dvh voor mobiele browsers (houdt rekening met adresbalk) */
         body {
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: white;
             font-family: 'Bogle', sans-serif;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            height: 100dvh; /* Dynamic Viewport Height */
+            box-sizing: border-box;
         }
 
-        .container {
+        .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             padding: 20px;
-            gap: 20px;
-            max-width: 500px;
-            margin: 0 auto;
+            gap: 15px;
             width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
             box-sizing: border-box;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 8vw, 2.5rem);
             text-align: center;
-            margin-bottom: 20px;
-            color: #f8fafc;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            margin: 0 0 10px 0;
+            line-height: 1.1;
         }
 
         .game-card {
             width: 100%;
-            padding: 25px;
-            font-size: 1.5rem;
+            padding: clamp(15px, 5vh, 25px);
+            font-size: clamp(1.1rem, 5vw, 1.5rem);
             font-weight: 700;
-            text-align: center;
             text-decoration: none;
             color: white;
-            border-radius: 20px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border: none;
+            gap: 12px;
+            transition: transform 0.1s;
+            box-sizing: border-box;
         }
 
         .game-card:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
 
         .btn-30s { background-color: var(--accent-30s); }
@@ -74,25 +72,21 @@
         .btn-wie { background-color: var(--accent-wie); }
 
         footer {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.7;
-            line-height: 1.5;
+            background: rgba(0,0,0,0.2);
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        /* Icoontjes via Emoji voor simpelheid */
-        .icon { font-size: 1.8rem; }
-
-        @media (max-width: 400px) {
-            h1 { font-size: 2rem; }
-            .game-card { padding: 20px; font-size: 1.3rem; }
-        }
+        .icon { font-size: 1.4em; }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="main-content">
         <h1>De Paeper-Partygames</h1>
 
         <a href="https://hainoch.github.io/30secondsPaeper/" class="game-card btn-30s">
