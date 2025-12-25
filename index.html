@@ -15,10 +15,9 @@
             --accent-30s: #e11d48;
             --accent-bom: #f59e0b;
             --accent-wie: #10b981;
-            --accent-tover: #8b5cf6; /* Magisch paars voor Toverzolder */
+            --accent-tover: #8b5cf6;
         }
 
-        /* Gebruik dvh voor mobiele browsers (houdt rekening met adresbalk) */
         body {
             margin: 0;
             padding: 0;
@@ -80,6 +79,62 @@
         .btn-wie { background-color: var(--accent-wie); }
         .btn-tover { background-color: var(--accent-tover); }
 
+        /* De kleine grijze tekst onder de buttons */
+        .dont-click-footer {
+            font-size: 0.75rem;
+            color: #94a3b8; /* Lichtgrijs */
+            cursor: pointer;
+            margin-top: 10px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .dont-click-footer:hover {
+            opacity: 1;
+        }
+
+        /* Modal / Pop-up Styling */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            padding: 40px 20px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 300px;
+            border: 2px solid #475569;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .secret-link {
+            display: inline-block;
+            margin-top: 25px;
+            background: #ffffff;
+            color: #0f172a;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: transform 0.1s;
+        }
+
+        .secret-link:active {
+            transform: scale(0.95);
+        }
+
         footer {
             padding: 15px;
             text-align: center;
@@ -113,12 +168,31 @@
         <a href="https://hainoch.github.io/Toverzolder/" class="game-card btn-tover">
             <span class="icon">🪄</span> De Toverzolder
         </a>
+
+        <button class="dont-click-footer" onclick="showSecret()">Niet hier klikken a.u.b.</button>
+    </div>
+
+    <div id="secretModal" class="modal-overlay" onclick="closeSecret()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <p style="font-size: 1.3rem; margin: 0; line-height: 1.4;">Oh nee, je hebt het geheime extra spel ontdekt! 😱</p>
+            <a href="https://hainoch.github.io/Indobird/" class="secret-link">Echt niet hier op klikken, hoor...</a>
+        </div>
     </div>
 
     <footer>
         © All rights reserved but not allemaal.<br>
         Made with ❤️ by Henoch & AI
     </footer>
+
+    <script>
+        function showSecret() {
+            document.getElementById('secretModal').style.display = 'flex';
+        }
+
+        function closeSecret() {
+            document.getElementById('secretModal').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
