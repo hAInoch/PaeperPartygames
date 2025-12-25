@@ -6,7 +6,6 @@
     <title>De Paeper-Partygames</title>
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
     <link href="https://fonts.googleapis.com/css2?family=Bogle:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -26,7 +25,7 @@
             font-family: 'Bogle', sans-serif;
             display: flex;
             flex-direction: column;
-            height: 100dvh; 
+            min-height: 100dvh; 
             box-sizing: border-box;
         }
 
@@ -64,14 +63,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            transition: transform 0.1s, filter 0.2s;
-            box-sizing: border-box;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
-
-        .game-card:active {
-            transform: scale(0.97);
-            filter: brightness(1.1);
         }
 
         .btn-30s { background-color: var(--accent-30s); }
@@ -79,30 +71,25 @@
         .btn-wie { background-color: var(--accent-wie); }
         .btn-tover { background-color: var(--accent-tover); }
 
-        /* De kleine grijze tekst onder de buttons */
         .dont-click-footer {
             font-size: 0.75rem;
-            color: #94a3b8; /* Lichtgrijs */
+            color: #94a3b8;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
             opacity: 0.6;
-            transition: opacity 0.2s;
             background: none;
             border: none;
             font-family: inherit;
+            padding: 10px;
         }
 
-        .dont-click-footer:hover {
-            opacity: 1;
-        }
-
-        /* Modal / Pop-up Styling */
+        /* --- VERBETERDE MODAL CSS --- */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            inset: 0; /* Vult het hele scherm */
             background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
+            z-index: 9999;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -110,29 +97,27 @@
 
         .modal-content {
             background: #1e293b;
-            padding: 40px 20px;
+            padding: 30px 20px;
             border-radius: 24px;
             text-align: center;
-            max-width: 300px;
+            width: 90%;
+            max-width: 320px; /* Zorgt dat hij op smalle schermen past */
             border: 2px solid #475569;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            /* Zorgt dat hij altijd in het midden staat */
+            margin: auto;
         }
 
         .secret-link {
-            display: inline-block;
-            margin-top: 25px;
+            display: block;
+            margin-top: 20px;
             background: #ffffff;
             color: #0f172a;
             text-decoration: none;
-            padding: 15px 25px;
+            padding: 15px;
             border-radius: 12px;
             font-weight: 800;
             font-size: 1rem;
-            transition: transform 0.1s;
-        }
-
-        .secret-link:active {
-            transform: scale(0.95);
         }
 
         footer {
@@ -141,8 +126,6 @@
             font-size: 0.8rem;
             opacity: 0.7;
             background: rgba(0,0,0,0.2);
-            width: 100%;
-            box-sizing: border-box;
         }
 
         .icon { font-size: 1.4em; }
@@ -156,15 +139,12 @@
         <a href="https://hainoch.github.io/30secondsPaeper/" class="game-card btn-30s">
             <span class="icon">⏱️</span> 30 Seconds
         </a>
-
         <a href="https://hainoch.github.io/Paeperbom/" class="game-card btn-bom">
             <span class="icon">💣</span> Paeper-bom
         </a>
-
         <a href="https://hainoch.github.io/wiebenik/" class="game-card btn-wie">
             <span class="icon">👤</span> Wie ben ik?
         </a>
-
         <a href="https://hainoch.github.io/Toverzolder/" class="game-card btn-tover">
             <span class="icon">🪄</span> De Toverzolder
         </a>
@@ -174,8 +154,12 @@
 
     <div id="secretModal" class="modal-overlay" onclick="closeSecret()">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <p style="font-size: 1.3rem; margin: 0; line-height: 1.4;">Oh nee, je hebt het geheime extra spel ontdekt! 😱</p>
-            <a href="https://hainoch.github.io/Indobird/" class="secret-link">Echt niet hier op klikken, hoor...</a>
+            <p style="font-size: 1.2rem; margin: 0; line-height: 1.4; color: white;">
+                Oh nee, je hebt het geheime extra spel ontdekt! 😱
+            </p>
+            <a href="https://hainoch.github.io/Indobird/" class="secret-link">
+                Echt niet hier op klikken, hoor...
+            </a>
         </div>
     </div>
 
@@ -186,11 +170,17 @@
 
     <script>
         function showSecret() {
-            document.getElementById('secretModal').style.display = 'flex';
+            const modal = document.getElementById('secretModal');
+            modal.style.display = 'flex';
+            // Voorkom scrollen op de achtergrond
+            document.body.style.overflow = 'hidden';
         }
 
         function closeSecret() {
-            document.getElementById('secretModal').style.display = 'none';
+            const modal = document.getElementById('secretModal');
+            modal.style.display = 'none';
+            // Herstel scrollen
+            document.body.style.overflow = 'auto';
         }
     </script>
 
